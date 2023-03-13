@@ -18,7 +18,11 @@
         <td><%= new.author %></td>
         <td><%= new.description %></td>
         <td><%= new.link %></td>
-        <td>Placeholder</td>
+        <td><%= link_to "Edit", edit_news_path(new) %></td>
+        <td><%= link_to "Delete", news_path(new), data: {
+                    turbo_method: :delete,
+                    turbo_confirm: "Are you sure?"
+                  } %></td>
       </tr>
     <% end %>
   </tbody>
