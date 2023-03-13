@@ -1,0 +1,25 @@
+<h1>Listado de Noticias</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Subtitle</th>
+      <th>Author</th>
+      <th>Description</th>
+      <th>Link</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @news.each do |new| %>
+      <tr>
+        <td><%= new.title %></td>
+        <td><%= new.subtitle %></td>
+        <td><%= new.author %></td>
+        <td><%= new.description %></td>
+        <td><%= new.link %></td>
+        <td>Placeholder</td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
