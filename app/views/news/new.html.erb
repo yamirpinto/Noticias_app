@@ -1,6 +1,15 @@
 <h1>Creando un nuevo Artículo de Noticia</h1>
 
-<%= form_with scope: :new, data: { turbo: false }, url: new_news_path, local: true do |f| %>
+<% if @new.errors.any? %>
+  <H2>Los siguientes errores previnieron la creación de un nuevo artículo de noticia:</h2>
+  <ul>
+    <% @new.errors.full_messages.each do |msg| %>
+    <li><%= msg %></li>
+    <% end %>
+  </ul>
+<% end %> 
+
+<%= form_with data: { turbo: false}, model: @new do |f| %>
 
   <p>
     <%= f.label :title %><br/>
