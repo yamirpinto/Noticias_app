@@ -1,0 +1,35 @@
+<% if @new.errors.any? %>
+  <H2>Los siguientes errores previnieron la edición del artículo de noticia:</h2>
+  <ul>
+    <% @new.errors.full_messages.each do |msg| %>
+    <li><%= msg %></li>
+    <% end %>
+  </ul>
+<% end %> 
+
+<%= form_with data: { turbo: false}, model: @new do |f| %>
+
+  <p>
+    <%= f.label :title %><br/>
+    <%= f.text_field :title %>
+  </p>
+  <p>
+    <%= f.label :subtitle %><br/>
+    <%= f.text_field :subtitle %>
+  </p>
+  <p>
+    <%= f.label :author %><br/>
+    <%= f.text_field :author %>
+  </p>
+  <p>
+    <%= f.label :description %><br/>
+    <%= f.text_area :description %>
+  </p>
+  <p>
+    <%= f.label :link %><br/>
+    <%= f.text_field :link %>
+  </p>
+  <p>
+    <%= f.submit %>
+  </p>
+  <% end %> 

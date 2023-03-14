@@ -5,3 +5,10 @@
 <p><strong>Autor: </strong><%= @new.author %></p>
 <p><strong>Descripción: </strong><%= @new.description %></p>
 <p><strong>Link: </strong><%= @new.link %></p>
+
+<%= link_to 'Edit', edit_news_path(@new) %> |
+<%= link_to "Delete", news_path(@new), data: {
+                    turbo_method: :delete,
+                    turbo_confirm: "Are you sure?"
+                  } %> |
+<%= link_to 'Return to news listing', news_path %>

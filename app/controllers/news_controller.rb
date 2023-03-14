@@ -1,7 +1,7 @@
 class NewsController < ApplicationController
+  before_action :set_article, only: [:show, :edit, :update, :destroy]
 
   def show
-    @new = News.find(params[:id])
   end
 
   def index
@@ -13,7 +13,6 @@ class NewsController < ApplicationController
   end
   
   def edit
-    @new = News.find(params[:id])
   end
 
   def create
@@ -27,7 +26,6 @@ class NewsController < ApplicationController
   end
 
   def update
-    @new = News.find(params[:id])
     if @new.update(new_params)
       flash[:notice] = "El artículo de noticia ha sido actualizado satisfactoriamente."
       redirect_to @new
@@ -37,12 +35,14 @@ class NewsController < ApplicationController
   end
 
   def destroy
-    @new = News.find(params[:id])
     @new.destroy
     redirect_to news_path
   end
   private
     def new_params
       params.require(:news).permit(:title, :subtitle, :author, :description, :link)
+    end
+    def set_article
+      @new = News.find(params[:id])
     end
 end
