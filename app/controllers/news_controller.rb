@@ -17,6 +17,7 @@ class NewsController < ApplicationController
 
   def create
     @new = News.new(new_params)
+    @new.user = User.first
     if @new.save
       flash[:notice] = "El artículo de noticia ha sido guardado satisfactoriamente."
       redirect_to @new
