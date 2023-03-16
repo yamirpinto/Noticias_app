@@ -1,4 +1,4 @@
 Rails.application.routes.draw do
-  root 'news#index'
+  root 'pages#home'
   resources :news
 end

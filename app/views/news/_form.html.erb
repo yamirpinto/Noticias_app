@@ -1,35 +1,36 @@
-<% if @new.errors.any? %>
-  <H2>Los siguientes errores previnieron la edición del artículo de noticia:</h2>
-  <ul>
-    <% @new.errors.full_messages.each do |msg| %>
-    <li><%= msg %></li>
-    <% end %>
-  </ul>
-<% end %> 
+<div class = "container">
 
-<%= form_with data: { turbo: false}, model: @new do |f| %>
-
-  <p>
-    <%= f.label :title %><br/>
-    <%= f.text_field :title %>
-  </p>
-  <p>
-    <%= f.label :subtitle %><br/>
-    <%= f.text_field :subtitle %>
-  </p>
-  <p>
-    <%= f.label :author %><br/>
-    <%= f.text_field :author %>
-  </p>
-  <p>
-    <%= f.label :description %><br/>
-    <%= f.text_area :description %>
-  </p>
-  <p>
-    <%= f.label :link %><br/>
-    <%= f.text_field :link %>
-  </p>
-  <p>
-    <%= f.submit %>
-  </p>
+  <% if @new.errors.any? %>
+    <H2>Los siguientes errores previnieron la edición del artículo de noticia:</h2>
+    <ul>
+      <% @new.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+      <% end %>
+    </ul>
   <% end %> 
+  <div class="row justify-content-center">
+    <%= form_with data: { turbo: false}, class: "shadow p-3 mb-3 bg-white rounded", model: @new do |f| %>
+      <div class="container shadow-lg p-3 mb-5 bg-white rounded">
+        <div class="form-group row">
+          <%= f.label :title, class: "col-2 col-form-label" %> <br/>
+          <%= f.text_field :title, class: "form-control shadow rounded", placeholder: "Ingrese un título" %> <br/><br/>
+          <%= f.label :subtitle, class: "col-2 col-form-label"  %><br/>
+          <%= f.text_field :subtitle, class: "form-control shadow rounded", placeholder: "Ingrese un subtítulo" %> <br/><br/>
+          <%= f.label :author, class: "col-2 col-form-label"  %><br/>
+          <%= f.text_field :author, class: "form-control shadow rounded", placeholder: "Ingrese autor" %> <br/><br/>
+          <%= f.label :link, class: "col-2 col-form-label"  %><br/>
+          <%= f.text_field :link, class: "form-control shadow rounded", placeholder: "Inserte link de imagen" %> <br/><br/>
+          <div class="col-10">
+            <br/>
+            <%= f.label :description, class: "col-2 col-form-label"  %><br/>
+            <%= f.text_area :description, rows: 8, class: "form-control shadow rounded", placeholder: "Ingrese descripción" %> <br/><br/>
+          </div>
+        </div>
+      </div>
+      <div class="form-group row">
+        <%= f.submit class: "btn btn-outline-dark btn-lg" %><br/>
+      </div>
+      <br/><br/>
+      <% end %>
+  </div>     
+</div>

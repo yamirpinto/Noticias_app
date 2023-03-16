@@ -1,14 +1,21 @@
-<h1>Mostrando Articulos de Noticias</h1>
-
-<p><strong>Titulo: </strong><%= @new.title %></p>
-<p><strong>Subtitulo:</strong><%= @new.subtitle %></p>
-<p><strong>Autor: </strong><%= @new.author %></p>
-<p><strong>Descripción: </strong><%= @new.description %></p>
-<p><strong>Link: </strong><%= @new.link %></p>
-
-<%= link_to 'Edit', edit_news_path(@new) %> |
-<%= link_to "Delete", news_path(@new), data: {
-                    turbo_method: :delete,
-                    turbo_confirm: "Are you sure?"
-                  } %> |
-<%= link_to 'Return to news listing', news_path %>
+<h1 class="text-center mt-4"><%= @new.title %></h1>
+  <div background-color: #000000;>
+      <img src=<%= @new.link %> class="card-img-top" max-height ="600px";>
+  </div>
+  <br/><br/>
+  <div class="container">
+    <div class="card">
+      <div class="card-body">
+        <h4 class="card-title"><%= @new.subtitle %></h4>
+        <h6 class="card-title"><%= @new.author %></h6>
+        <h6 class="card-title"><%= @new.created_at %></h6><br/>
+        <p class="card-text"><%= @new.description %></p>
+        <div class="text-center">
+          <%= link_to "Mostrar", news_path(@new), class: "btn btn-outline-success" %>
+          <%= link_to "Edit", edit_news_path(@new), class: "btn btn-xs btn-primary" %> 
+          <%= link_to "Eliminar", @new, method: :delete, data: { confirm: "Estás seguro que deseas borrar esta noticia?" }, class: "btn btn-xs btn-danger" %>
+        </div>
+      </div>
+    </div>
+  </div>
+<%= link_to 'Return to news listing', news_index_path, class: "btn btn-outline-success" %>
