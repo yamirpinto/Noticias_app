@@ -1,0 +1,31 @@
+<div class = "container">
+
+  <% if @user.errors.any? %>
+    <H2>Los siguientes errores previnieron la creación del usuario:</h2>
+    <ul>
+      <% @user.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+      <% end %>
+    </ul>
+  <% end %> 
+  <div class="row justify-content-center">
+    <%= form_with data: { turbo: false}, class: "shadow p-3 mb-3 bg-white rounded", model: @user do |f| %>
+      <div class="container shadow-lg p-3 mb-5 bg-white rounded">
+        <div class="form-group row">
+          <%= f.label :username, class: "col-2 col-form-label" %> <br/>
+          <%= f.text_field :username, class: "form-control shadow rounded", placeholder: "Ingrese nombrede usuario" %> <br/><br/>
+          <%= f.label :email, class: "col-2 col-form-label"  %><br/>
+          <%= f.email_field :email, class: "form-control shadow rounded", placeholder: "Ingrese E-mail" %> <br/><br/>
+        </div>
+        <div class="form-group row">
+          <%= f.label :password, class: "col-2 col-form-label" %> <br/>
+          <%= f.password_field :password, class: "form-control shadow rounded", placeholder: "Ingresa tu nueva clave" %> <br/><br/>
+        </div>
+      </div>
+      <div class="form-group row-text-center">
+        <%= f.submit class: "btn btn-outline-dark btn-lg" %><br/>
+      </div>
+      <br/><br/>
+      <% end %>
+  </div>     
+</div>
