@@ -1,0 +1,18 @@
+<div class="mx-auto" style="width: 80%;">
+    <% @news.each do |new| %>
+      <div class="card text-center">
+        <img src=<%= new.link %> class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title"><%= new.title %></h5>
+          <%= link_to new.user.username, user_path(new.user) %>          
+          <p class="card-text"><%= new.subtitle %></p>
+            <%= link_to "Mostrar", news_path(new), class: "btn btn-outline-success" %>
+            <%= link_to "Edit", edit_news_path(new), class: "btn btn-xs btn-primary" %> 
+            <%= link_to "Eliminar", news_path(new), method: :delete, 
+                                                  data: { confirm: "Estás seguro que deseas borrar esta noticia?" }, 
+                                                  class: "btn btn-xs btn-danger" %>                                    
+        </div>
+      </div>
+  
+    <% end %>
+  </div>

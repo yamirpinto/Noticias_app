@@ -7,14 +7,16 @@
     <div class="card">
       <div class="card-body">
         <h4 class="card-title"><%= @new.subtitle %></h4>
-        by <%= @new.user.username if @user.user %>
+        <%= @new.user.username %>
         <h6 class="card-title"><%= @new.author %></h6>
         <h6 class="card-title"><%= @new.created_at %></h6><br/>
         <p class="card-text"><%= @new.description %></p>
         <div class="text-center">
-          <%= link_to "Mostrar", news_path(@new), class: "btn btn-outline-success" %>
-          <%= link_to "Edit", edit_news_path(@new), class: "btn btn-xs btn-primary" %> 
-          <%= link_to "Eliminar", @new, method: :delete, data: { confirm: "Estás seguro que deseas borrar esta noticia?" }, class: "btn btn-xs btn-danger" %>
+          
+            <%= link_to "Mostrar", news_path(@new), class: "btn btn-outline-success" %>
+            <%= link_to "Edit", edit_news_path(@new), class: "btn btn-xs btn-primary" %> 
+            <%= link_to "Eliminar", @new, method: :delete, data: { confirm: "Estás seguro que deseas borrar esta noticia?" }, class: "btn btn-xs btn-danger" %>
+          
         </div>
       </div>
     </div>

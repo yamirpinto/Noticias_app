@@ -6,15 +6,42 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <% if logged_in? %>
             <li class="nav-item">
               <%= link_to "Lista de Noticias", news_index_path, class: "nav-link bg-dark" %>
             </li>
+            <% end %> 
+            <% if logged_in? %>
             <li class="nav-item">
-              <%= link_to "Publicar Noticia", new_news_path, class: "nav-link bg-dark" %>
+              <%= link_to "Bloggers", users_path, class: "nav-link bg-dark" %>
             </li>
-            <li class="nav-item">
-              <a class="nav-link disabled">Pestaña Oculta</a>
-            </li>
+            <% end %> 
+            <% if logged_in? %>
+              <li class="nav-item">
+                <%= link_to "Publicar Noticia", new_news_path, class: "nav-link bg-dark" %>
+              </li>
+            <% end %>  
+            <% if logged_in? %>
+              <li class="nav-item">
+                <%= link_to current_user.username, user_path(current_user), class: "nav-link bg-dark" %>
+              </li>
+              <li class="nav-item">
+                <%= link_to 'Logout', logout_path, class: "nav-link bg-dark", method: :delete %>
+              </li>
+              <li>
+                <%= link_to "Ver tu Perfil", user_path(current_user), class: "nav-link bg-dark" %>
+              </li>
+              <li>
+                <%= link_to "Editar tu Perfil", edit_user_path(current_user), class: "nav-link bg-dark" %>
+              <li>
+            <% else %>
+              <li class="nav-item">
+                <%= link_to 'Log in', login_path, class: "nav-link bg-dark" %>
+              </li>
+              <li class="nav-item">
+                <%= link_to 'Sign up', signup_path, class: "nav-link bg-dark" %>
+              </li>
+            <% end %>
           </ul>
           <form class="d-flex" role="search">
             <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">

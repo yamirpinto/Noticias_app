@@ -1,5 +1,7 @@
 class NewsController < ApplicationController
   before_action :set_article, only: [:show, :edit, :update, :destroy]
+  before_action :require_user
+  before_action :require_same_user, only: [:edit, :update, :destroy]
 
   def show
   end
@@ -17,7 +19,7 @@ class NewsController < ApplicationController
 
   def create
     @new = News.new(new_params)
-    @new.user = User.first
+    @new.user = current_user
     if @new.save
       flash[:notice] = "El artículo de noticia ha sido guardado satisfactoriamente."
       redirect_to @new
@@ -43,7 +45,15 @@ class NewsController < ApplicationController
     def new_params
       params.require(:news).permit(:title, :subtitle, :author, :description, :link)
     end
+
     def set_article
       @new = News.find(params[:id])
+    end
+
+    def require_same_user
+      if current_user != @new.user
+        flash[:alert] = "Sólo puedes editar tus propias noticias"
+        redirect_to @new
+      end
     end
 end
