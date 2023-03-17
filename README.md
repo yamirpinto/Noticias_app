@@ -5,20 +5,16 @@ application up and running.
 
 Things you may want to cover:
 
-* Ruby version
+* Ruby version 3.1.3
 
-* System dependencies
+* Rails version 7.0.4.3
 
-* Configuration
+Para levantar el servidor se debe tener instalado previamente las versiones antes mencionadas.
 
-* Database creation
+Comando para levantar servidor: rails s
+Comando para mirar rutas: rails routes --expanded
 
-* Database initialization
+Consola rails:  rails c
 
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Users.all <--- para consultar todos los usuarios creados
+News.all  <--- para consultar todas las noticias y sus usuarios asociados
